@@ -1,3 +1,4 @@
+
 UC1: Ability to create a Address Book Service DB
 
 mysql> create database Address_Book_Service;
@@ -74,3 +75,18 @@ mysql> select * from addressBook;
 | Sravani   | Katta    | Manchiryal | Tn    | Tn    | 1230017 |      124767 | Spr@gmail.com |
 +-----------+----------+------------+-------+-------+---------+-------------+---------------+
 3 rows in set (0.03 sec)
+
+UC4: Ability to edit existing contact person using their name
+mysql> update addressBook set city = 'Mumbai' where firstName = 'Sneha';
+Query OK, 1 row affected (0.33 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from addressBook;
++-----------+----------+------------+--------+-------+---------+-------------+---------------+
+| firstName | lastName | address    | city   | state | zip     | phoneNumber | email         |
++-----------+----------+------------+--------+-------+---------+-------------+---------------+
+| Raj       | potu     | Kher       | Satar  | MH    |  879617 |      877767 | Rp@gmail.com  |
+| Sneha     | Khan     | Dighi      | Mumbai | MH    |  570017 |      676767 | SK@gmail.com  |
+| Sravani   | Katta    | Manchiryal | Tn     | Tn    | 1230017 |      124767 | Spr@gmail.com |
++-----------+----------+------------+--------+-------+---------+-------------+---------------+
+3 rows in set (0.08 sec
