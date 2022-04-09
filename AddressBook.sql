@@ -1,4 +1,3 @@
-
 UC1: Ability to create a Address Book Service DB
 
 mysql> create database Address_Book_Service;
@@ -89,4 +88,17 @@ mysql> select * from addressBook;
 | Sneha     | Khan     | Dighi      | Mumbai | MH    |  570017 |      676767 | SK@gmail.com  |
 | Sravani   | Katta    | Manchiryal | Tn     | Tn    | 1230017 |      124767 | Spr@gmail.com |
 +-----------+----------+------------+--------+-------+---------+-------------+---------------+
-3 rows in set (0.08 sec
+3 rows in set (0.08 sec)
+
+
+UC5:Ability to delete a person using person's name
+mysql> delete from addressBook  where firstName = 'Raj';
+Query OK, 1 row affected (0.12 sec)
+mysql> select * from addressBook;
++-----------+----------+------------+--------+-------+---------+-------------+---------------+
+| firstName | lastName | address    | city   | state | zip     | phoneNumber | email         |
++-----------+----------+------------+--------+-------+---------+-------------+---------------+
+| Sneha     | Khan     | Dighi      | Mumbai | MH    |  570017 |      676767 | SK@gmail.com  |
+| Sravani   | Katta    | Manchiryal | Tn     | Tn    | 1230017 |      124767 | Spr@gmail.com |
++-----------+----------+------------+--------+-------+---------+-------------+---------------+
+2 rows in set (0.00 sec)
