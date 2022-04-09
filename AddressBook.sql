@@ -57,3 +57,20 @@ mysql> Describe addressBook;
 8 rows in set (0.06 sec)
 
 
+UC3: Ability to insert new Contacts to Address Book
+mysql> insert into addressBook (firstName, lastName, address, city, state, zip, phoneNumber, email) VALUES
+    -> ('Sneha', 'Khan', 'Dighi', 'Pune', 'MH', 570017, 676767, 'SK@gmail.com'),
+    -> ('Raj', 'potu', 'Kher', 'Satar', 'MH', 879617, 877767, 'Rp@gmail.com'),
+    -> ('Sravani', 'Katta', 'Manchiryal', 'Tn', 'Tn', 1230017, 124767, 'Spr@gmail.com');
+Query OK, 3 rows affected (0.43 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from addressBook;
++-----------+----------+------------+-------+-------+---------+-------------+---------------+
+| firstName | lastName | address    | city  | state | zip     | phoneNumber | email         |
++-----------+----------+------------+-------+-------+---------+-------------+---------------+
+| Raj       | potu     | Kher       | Satar | MH    |  879617 |      877767 | Rp@gmail.com  |
+| Sneha     | Khan     | Dighi      | Pune  | MH    |  570017 |      676767 | SK@gmail.com  |
+| Sravani   | Katta    | Manchiryal | Tn    | Tn    | 1230017 |      124767 | Spr@gmail.com |
++-----------+----------+------------+-------+-------+---------+-------------+---------------+
+3 rows in set (0.03 sec)
