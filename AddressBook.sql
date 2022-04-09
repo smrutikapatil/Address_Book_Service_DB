@@ -102,3 +102,14 @@ mysql> select * from addressBook;
 | Sravani   | Katta    | Manchiryal | Tn     | Tn    | 1230017 |      124767 | Spr@gmail.com |
 +-----------+----------+------------+--------+-------+---------+-------------+---------------+
 2 rows in set (0.00 sec)
+UC6: Ability to Retrieve Person belonging to a City or State from the Address Book
+mysql> insert into addressBook (firstName, lastName, address, city, state, zip,phoneNumber, email) VALUES
+    -> ('Raj', 'potu', 'Satar', 'Satar', 'MH', 879617, 877767, 'Rp@gmail.com');
+Query OK, 1 row affected (0.14 sec)
+mysql> select * from addressBook where city = 'Satar';
++-----------+----------+---------+-------+-------+--------+-------------+--------------+
+| firstName | lastName | address | city  | state | zip    | phoneNumber | email        |
++-----------+----------+---------+-------+-------+--------+-------------+--------------+
+| Raj       | potu     | Satar   | Satar | MH    | 879617 |      877767 | Rp@gmail.com |
++-----------+----------+---------+-------+-------+--------+-------------+--------------+
+1 row in set (0.06 sec)
