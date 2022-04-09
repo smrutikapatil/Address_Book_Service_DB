@@ -104,7 +104,6 @@ mysql> select * from addressBook;
 2 rows in set (0.00 sec)
 
 
-
 UC6: Ability to Retrieve Person belonging to a City or State from the Address Book
 mysql> insert into addressBook (firstName, lastName, address, city, state, zip,phoneNumber, email) VALUES
     -> ('Raj', 'potu', 'Satar', 'Satar', 'MH', 879617, 877767, 'Rp@gmail.com');
@@ -129,3 +128,13 @@ mysql> select city, Count(firstName) from addressBook group by city;
 | Tn     |                1 |
 +--------+------------------+
 3 rows in set (0.00 sec)
+
+
+UC8:Ability to retrieve entries sorted alphabetically by Person’s name for a given city
+mysql> select * from addressBook where city = 'Mumbai' ORDER BY firstName ASC;
++-----------+----------+---------+--------+-------+--------+-------------+--------------+
+| firstName | lastName | address | city   | state | zip    | phoneNumber | email        |
++-----------+----------+---------+--------+-------+--------+-------------+--------------+
+| Sneha     | Khan     | Dighi   | Mumbai | MH    | 570017 |      676767 | SK@gmail.com |
++-----------+----------+---------+--------+-------+--------+-------------+--------------+
+1 row in set (0.00 sec)
