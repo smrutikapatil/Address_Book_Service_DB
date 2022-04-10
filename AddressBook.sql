@@ -104,6 +104,7 @@ mysql> select * from addressBook;
 2 rows in set (0.00 sec)
 
 
+
 UC6: Ability to Retrieve Person belonging to a City or State from the Address Book
 mysql> insert into addressBook (firstName, lastName, address, city, state, zip,phoneNumber, email) VALUES
     -> ('Raj', 'potu', 'Satar', 'Satar', 'MH', 879617, 877767, 'Rp@gmail.com');
@@ -115,9 +116,6 @@ mysql> select * from addressBook where city = 'Satar';
 | Raj       | potu     | Satar   | Satar | MH    | 879617 |      877767 | Rp@gmail.com |
 +-----------+----------+---------+-------+-------+--------+-------------+--------------+
 1 row in set (0.06 sec)
-
-
-
 UC7:Ability to understand the count of address book by City and State
 mysql> select city, Count(firstName) from addressBook group by city;
 +--------+------------------+
@@ -130,7 +128,9 @@ mysql> select city, Count(firstName) from addressBook group by city;
 3 rows in set (0.00 sec)
 
 
+
 UC8:Ability to retrieve entries sorted alphabetically by Person’s name for a given city
+
 mysql> select * from addressBook where city = 'Mumbai' ORDER BY firstName ASC;
 +-----------+----------+---------+--------+-------+--------+-------------+--------------+
 | firstName | lastName | address | city   | state | zip    | phoneNumber | email        |
@@ -138,3 +138,47 @@ mysql> select * from addressBook where city = 'Mumbai' ORDER BY firstName ASC;
 | Sneha     | Khan     | Dighi   | Mumbai | MH    | 570017 |      676767 | SK@gmail.com |
 +-----------+----------+---------+--------+-------+--------+-------------+--------------+
 1 row in set (0.00 sec)
+
+
+#UC9 identify each addressbook with its name and type
+
+Alter table AddressBook add AddressBookName varchar(45) Not Null after Email_Id;
+Alter table AddressBook add AddressBookType varchar(45) Not Null after AddressBookName; 
+ 
+Update AddressBook set AddressBookName= 'AddressBook1' where FirstName  = 'Minal' or FirstName  = 'Pranali';
+Update AddressBook set AddressBookName ='AddressBook2' where FirstName  = 'Soniya' or FirstName  = 'Mayuri';
+Update AddressBook set AddressBookName = 'AddressBook3' where FirstName  = 'Nikita' or FirstName  = 'Shital';
+Update AddressBook set AddressBookType = 'Family' where FirstName  = 'Nikita'  or FirstName  = 'Pranali';
+Update AddressBook set AddressBookType = 'Friends' where FirstName  = 'Mayuri' or FirstName  = 'Shital' ;
+Update AddressBook set AddressBookType = 'Profession' where FirstName  = 'Minal' or FirstName  = 'Soniya';  
+
+*creating different address books as family , friends amd profession ,all having reference of addressbook
+
+ CREATE table FriendsAddressbook(
+Friend_ID     int Not Null auto_increment,
+AddressbookID int ,
+Primary key (Friend_ID) ,
+FOREIGN KEY (AddressbookID) REFERENCES AddressBook(ID) ON DELETE CASCADE
+ );
+insert into FriendsAddressbook (AddressbookID) values ('5'),('7');
+select * from FriendsAddressbook;
+ 
+
+CREATE table FamilyAddressbook(
+Family_ID     int Not Null auto_increment,
+AddressbookID int ,
+Primary key (Family_ID) ,
+FOREIGN KEY (AddressbookID) REFERENCES AddressBook(ID) ON DELETE CASCADE
+ ); 
+insert into FamilyAddressbook (AddressbookID) values ('2'),('3'); 
+select * from FamilyAddressbook;
+ 
+
+CREATE table ProfessionalAddressbook(
+Profession_ID     int Not Null auto_increment,
+AddressbookID int ,
+Primary key (Profession_ID) ,
+FOREIGN KEY (AddressbookID) REFERENCES AddressBook(ID) ON DELETE CASCADE
+ );  
+insert into ProfessionalAddressbook (AddressbookID) values ('4'),('6'); 
+select * from ProfessionalAddressbook;
