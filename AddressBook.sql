@@ -129,7 +129,7 @@ mysql> select city, Count(firstName) from addressBook group by city;
 
 
 
-UC8:Ability to retrieve entries sorted alphabetically by Person’s name for a given city
+UC8:Ability to retrieve entries sorted alphabetically by Personâ€™s name for a given city
 
 mysql> select * from addressBook where city = 'Mumbai' ORDER BY firstName ASC;
 +-----------+----------+---------+--------+-------+--------+-------------+--------------+
@@ -208,8 +208,6 @@ insert into friendsaddressbook (AddressbookID) values (@@last_insert_id);
 select * from friendsaddressbook;
 select * from Addressbook;
 select * from addressbook;
-
-
 
 
 UC:13 
