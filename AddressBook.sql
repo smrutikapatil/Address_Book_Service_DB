@@ -189,3 +189,22 @@ UC:10 Ability to get count by type
 Select Count(FirstName) From AddressBook where AddressBookType = 'Family' order by FirstName;		#Count 2
 Select Count(FirstName) From AddressBook where AddressBookType = 'Friends' order by FirstName;		#Count 2
 Select Count(FirstName) From AddressBook where AddressBookType = 'Profession' order by FirstName;	#Count 2
+
+
+UC:11 insert contact in family addressbook by using addressbook class
+ INSERT INTO addressbook(FirstName, LastName, Address, City, State, Zip, PhoneNo, Email_ID,AddressBookName,addressBookType)
+					VALUES ('Rupali', 'Takhare', 'Paris Complex', 'Nagpur', 'Maharashtra', '481204', '9935009787', 'mayuri10@gmail.com', 'Addressbook1', 'Family');
+select @@last_insert_id ;
+insert into familyaddressbook (AddressbookID) values (@@last_insert_id);
+select * from FamilyAddressbook;
+select * from addressbook;
+
+
+UC:11 insert contact in friends addressbook by using addressbook class
+ INSERT INTO addressbook(FirstName, LastName, Address, City, State, Zip, PhoneNo, Email_ID,AddressBookName,addressBookType)
+					VALUES ('Dipali', 'Shahare', 'Mahda Colony', 'Chandrapur', 'Maharashtra', '400204', '9555009787', 'shaharedipali@gmail.com', 'Addressbook3', 'Friend');
+select @@last_insert_id ;
+insert into friendsaddressbook (AddressbookID) values (@@last_insert_id);
+select * from friendsaddressbook;
+select * from Addressbook;
+select * from addressbook;
