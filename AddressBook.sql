@@ -140,7 +140,7 @@ mysql> select * from addressBook where city = 'Mumbai' ORDER BY firstName ASC;
 1 row in set (0.00 sec)
 
 
-#UC9 identify each addressbook with its name and type
+UC9:identify each addressbook with its name and type
 
 Alter table AddressBook add AddressBookName varchar(45) Not Null after Email_Id;
 Alter table AddressBook add AddressBookType varchar(45) Not Null after AddressBookName; 
@@ -182,3 +182,10 @@ FOREIGN KEY (AddressbookID) REFERENCES AddressBook(ID) ON DELETE CASCADE
  );  
 insert into ProfessionalAddressbook (AddressbookID) values ('4'),('6'); 
 select * from ProfessionalAddressbook;
+
+
+UC:10 Ability to get count by type
+
+Select Count(FirstName) From AddressBook where AddressBookType = 'Family' order by FirstName;		#Count 2
+Select Count(FirstName) From AddressBook where AddressBookType = 'Friends' order by FirstName;		#Count 2
+Select Count(FirstName) From AddressBook where AddressBookType = 'Profession' order by FirstName;	#Count 2
